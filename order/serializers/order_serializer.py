@@ -9,12 +9,10 @@ class OrderSerializer(serializers.ModelSerializer):
     total = Serializers.SerializerMethodField()
     
     def get_total(self, instance):
-        total = sum(
-            [
-                product.price 
-                for product in instance.product.all()
-                ]
-            )
+        total = sum([
+            product.price 
+            for product in instance.product.all()
+            ])
         return total
     
     class Meta:
