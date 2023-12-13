@@ -7,7 +7,7 @@ from product.serializers.product_serializer import ProductSerializer
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(required=True, many=True)
+    product = ProductSerializer(required=False, many=True)
     products_id = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all(),
         write_only=True,
@@ -36,7 +36,7 @@ class OrderSerializer(serializers.ModelSerializer):
         product_data = validated_data.pop('products_id')
         user_data = validated_data.pop('user')
         
-        order = Order.objects.create(validated_data)
+        order = Order.objects.create(**validated_data)
         for product in product_data:
             order.product.add(product)
             
