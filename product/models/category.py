@@ -6,6 +6,3 @@ class Category(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(max_length=500, blank=True, null=True)
     active = models.BooleanField(default=True)
-    
-    def __unicode__(self):
-        return self.title
