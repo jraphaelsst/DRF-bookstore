@@ -2,9 +2,11 @@ import json
 
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
+from rest_framework.authtoken.models import Token
 
 from django.urls import reverse
 
+from order.factories import UserFactory
 from product.factories import CategoryFactory
 from product.models import Category
 

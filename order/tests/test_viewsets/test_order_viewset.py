@@ -2,6 +2,7 @@ import json
 
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
+from rest_framework.authtoken.models import Token
 
 from django.urls import reverse
 
@@ -46,6 +47,7 @@ class TestOrderViewSet(APITestCase):
         token = Token.objects.get(user__username=self.user.username)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         
+        user = UserFactory()
         product = ProductFactory()
         category = CategoryFactory()
         data = json.dumps({
