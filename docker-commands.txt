@@ -1,0 +1,9 @@
+docker build
+
+docker run
+
+docker stop
+
+docker logs
+
+docker exec -it docker.id /bin/bash
